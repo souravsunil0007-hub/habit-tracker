@@ -67,8 +67,18 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Something went wrong!', error: err.message });
 });
 
-connectDB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+let databaseReady;
+const initializeDatabase = () => {
+  databaseReady = databaseReady || connectDB();
+  return databaseReady;
+};
+
+if (require.main === module) {
+  initializeDatabase().then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on http://localhost:${PORT}`);
+    });
   });
-});
+}
+
+module.exports = { app, initializeDatabase };
