@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistics | Habit Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-badge">✓</div>
+          <span>Habit Tracker</span>
+        </div>
+
+        <nav class="nav-menu">
+          <a class="nav-item" href="dashboard.html"><span class="nav-icon">🏠</span> Dashboard</a>
+          <a class="nav-item" href="calendar.html"><span class="nav-icon">📅</span> Calendar</a>
+          <a class="nav-item active" href="yearly.html"><span class="nav-icon">📊</span> Yearly Statistics</a>
+          <a class="nav-item" href="login.html"><span class="nav-icon">🔒</span> Logout</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-pill">
+            <div class="avatar" id="userAvatar">U</div>
+            <div>
+              <div id="sidebarUserName">User</div>
+              <small id="sidebarUserEmail">user@email.com</small>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="page-title">
+            <h1>Statistics</h1>
+            <p>Measure your consistency and growth.</p>
+          </div>
+          <div class="top-actions">
+            <button id="themeToggle" class="icon-button" type="button">🌙</button>
+          </div>
+        </header>
+
+        <section class="stats-grid grid">
+          <article class="card stat-card">
+            <div class="stat-label">Daily Rate</div>
+            <div class="stat-value" id="dailyRateValue">0%</div>
+          </article>
+
+          <article class="card stat-card">
+            <div class="stat-label">Weekly Rate</div>
+            <div class="stat-value" id="weeklyRateValue">0%</div>
+          </article>
+
+          <article class="card stat-card">
+            <div class="stat-label">Monthly Rate</div>
+            <div class="stat-value" id="monthlyRateValue">0%</div>
+          </article>
+
+          <article class="card stat-card">
+            <div class="stat-label">Current Streak</div>
+            <div class="stat-value" id="statCurrentStreak">0</div>
+          </article>
+
+          <article class="card stat-card">
+            <div class="stat-label">Longest Streak</div>
+            <div class="stat-value" id="statLongestStreak">0</div>
+          </article>
+
+          <article class="card stat-card">
+            <div class="stat-label">Total Completed</div>
+            <div class="stat-value" id="statTotalCompleted">0</div>
+          </article>
+
+          <article class="card stat-card">
+            <div class="stat-label">Total Missed</div>
+            <div class="stat-value" id="statTotalMissed">0</div>
+          </article>
+        </section>
+
+        <section class="content-grid" style="margin-top: 22px;">
+          <div class="card chart-card">
+            <div class="section-head">
+              <h3>Completion Trend</h3>
+            </div>
+            <div id="chartBox" class="chart-box"></div>
+            <div class="chart-lines">
+              <span>Mon</span>
+              <span>Tue</span>
+              <span>Wed</span>
+              <span>Thu</span>
+              <span>Fri</span>
+              <span>Sat</span>
+              <span>Sun</span>
+            </div>
+          </div>
+
+          <div class="card section-card">
+            <div class="section-head">
+              <h3>Recent Activity</h3>
+            </div>
+            <div id="recentHistoryList" class="history-list"></div>
+          </div>
+        </section>
+
+        <section class="progress-detail-grid" style="margin-top: 22px;">
+          <div class="card section-card">
+            <div class="section-head">
+              <div><span class="eyebrow">Saved progress</span><h3>Period completion</h3></div>
+            </div>
+            <div id="periodProgressList" class="period-progress-list"></div>
+          </div>
+          <div class="card section-card">
+            <div class="section-head">
+              <div><span class="eyebrow">Missed history</span><h3>Things I Didn't Do</h3></div>
+            </div>
+            <div id="missedHistoryList" class="history-list"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

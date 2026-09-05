@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yearly Statistics | Habit Tracker</title>
+    <link rel="stylesheet" href="yearly.css" />
+  </head>
+  <body>
+    <div class="yearly-shell">
+      <header class="yearly-header">
+        <div class="brand"><span class="brand-mark">✓</span><strong>Habit Tracker</strong></div>
+        <nav class="yearly-nav" aria-label="Habit tracker navigation">
+          <a href="dashboard.html">Manual</a>
+          <a class="active" href="yearly.html">Dashboard</a>
+          <a href="calendar.html">Example</a>
+          <span class="month-links" id="monthLinks"></span>
+        </nav>
+        <div class="header-actions">
+          <button id="prevYear" type="button" aria-label="Previous year">‹</button>
+          <strong id="yearLabel">Year</strong>
+          <button id="nextYear" type="button" aria-label="Next year">›</button>
+          <button id="yearlyThemeToggle" type="button" aria-label="Toggle dark mode">🌙</button>
+          <button id="logoutButton" class="logout-button" type="button">Logout</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-heading">
+          <div><span class="eyebrow">Personal habit tracker</span><h1>Yearly Statistics</h1><p>See your consistency across every month.</p></div>
+          <div class="hero-number"><span>Overall yearly progress</span><strong id="overallProgress">0%</strong></div>
+        </section>
+
+        <section class="chart-panel">
+          <div class="panel-heading"><div><span class="eyebrow">Year at a glance</span><h2 id="chartTitle">Completion trend</h2></div><span class="legend"><i></i> Progress</span></div>
+          <div class="chart-wrap"><svg id="yearChart" role="img" aria-label="Yearly habit completion chart" viewBox="0 0 1200 360" preserveAspectRatio="none"></svg></div>
+          <div class="chart-axis" id="chartAxis"></div>
+        </section>
+
+        <section class="goal-progress-layout">
+          <div class="chart-panel goal-progress-panel"><div class="panel-heading"><div><span class="eyebrow">Category performance</span><h2>Goal Progress</h2></div><span class="legend"><i></i> Completion</span></div><div id="goalProgressList" class="goal-progress-list"></div></div>
+          <div class="chart-panel goal-category-panel"><div class="panel-heading"><div><span class="eyebrow">Distribution</span><h2>Goal Categories</h2></div></div><div id="goalCategoryRing" class="goal-category-ring"><strong id="goalCategoryAverage">0%</strong></div><div id="goalCategoryLegend" class="goal-category-legend"></div></div>
+        </section>
+
+        <section class="monthly-section"><div class="section-heading"><div><span class="eyebrow">Monthly breakdown</span><h2>Progress by month</h2></div><span id="monthlyCount">12 months</span></div><div class="monthly-grid" id="monthlyGrid"></div></section>
+
+        <section class="overview-panel"><div class="section-heading"><div><span class="eyebrow">Year summary</span><h2>Overall Statistics</h2></div></div><div class="overview-grid" id="overviewGrid"></div></section>
+
+        <section class="overview-panel missed-year-panel"><div class="section-heading"><div><span class="eyebrow">Saved missed history</span><h2>Things I Didn't Do</h2></div><span id="missedYearCount">0 records</span></div><div id="yearMissedList" class="year-missed-list"></div></section>
+      </main>
+    </div>
+    <script src="config.js"></script>
+    <script src="yearly.js"></script>
+  </body>
+</html>

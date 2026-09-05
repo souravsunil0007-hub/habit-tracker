@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habits | Habit Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-badge">✓</div>
+          <span>Habit Tracker</span>
+        </div>
+
+        <nav class="nav-menu">
+          <a class="nav-item" href="dashboard.html"><span class="nav-icon">🏠</span> Dashboard</a>
+          <a class="nav-item active" href="habits.html"><span class="nav-icon">🧩</span> Habits</a>
+          <a class="nav-item" href="calendar.html"><span class="nav-icon">📅</span> Calendar</a>
+          <a class="nav-item" href="statistics.html"><span class="nav-icon">📊</span> Statistics</a>
+          <a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
+          <a class="nav-item" href="login.html"><span class="nav-icon">🔒</span> Logout</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-pill">
+            <div class="avatar" id="userAvatar">U</div>
+            <div>
+              <div id="sidebarUserName">User</div>
+              <small id="sidebarUserEmail">user@email.com</small>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="page-title">
+            <h1>Habit Management</h1>
+            <p>Create, edit, and manage your routines.</p>
+          </div>
+          <div class="top-actions">
+            <button id="themeToggle" class="icon-button" type="button">🌙</button>
+            <button id="addHabitBtn" class="primary-btn" type="button">+ Add Habit</button>
+          </div>
+        </header>
+
+        <div class="page-card">
+          <div class="section-head">
+            <h3>Your habits</h3>
+          </div>
+          <table class="habit-table">
+            <thead>
+              <tr>
+                <th>Habit</th>
+                <th>Category</th>
+                <th>Frequency</th>
+                <th>Start Date</th>
+                <th>Goal</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="habitTableBody"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <div id="habitModal" class="hidden">
+      <div class="auth-page" style="padding: 20px;">
+        <div class="auth-card" style="max-width: 620px;">
+          <h2 id="habitModalTitle">Add Habit</h2>
+          <form id="habitForm">
+            <input type="hidden" id="habitId" />
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="habitName">Habit Name</label>
+                <input id="habitName" type="text" required />
+              </div>
+
+              <div class="form-group">
+                <label for="habitCategory">Category</label>
+                <select id="habitCategory">
+                  <option>Health</option>
+                  <option>Study</option>
+                  <option>Fitness</option>
+                  <option>Personal</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="habitFrequency">Frequency</label>
+                <select id="habitFrequency">
+                  <option>Daily</option>
+                  <option>Weekly</option>
+                  <option>Custom</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="habitDailyGoal">Daily Goal</label>
+                <input id="habitDailyGoal" type="number" min="1" value="1" required />
+              </div>
+
+              <div class="form-group" style="grid-column: 1 / -1;">
+                <label for="habitDescription">Description</label>
+                <textarea id="habitDescription" rows="3"></textarea>
+              </div>
+
+              <div class="form-group" style="grid-column: 1 / -1;">
+                <label for="habitStartDate">Start Date</label>
+                <input id="habitStartDate" type="date" required />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">Save Habit</button>
+              <button type="button" id="closeHabitModal" class="secondary-btn">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

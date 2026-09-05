@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Habit Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-badge">✓</div>
+          <span>Habit Tracker</span>
+        </div>
+
+        <nav class="nav-menu">
+          <a class="nav-item active" href="dashboard.html"><span class="nav-icon">🏠</span> Dashboard</a>
+          <a class="nav-item" href="calendar.html"><span class="nav-icon">📅</span> Calendar</a>
+          <a class="nav-item" href="yearly.html"><span class="nav-icon">📊</span> Yearly Statistics</a>
+          <a class="nav-item" href="login.html"><span class="nav-icon">🔒</span> Logout</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-pill">
+            <div class="avatar" id="userAvatar">U</div>
+            <div>
+              <div id="sidebarUserName">User</div>
+              <small id="sidebarUserEmail">user@email.com</small>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <section class="dashboard-ribbon" aria-label="Habit tracker overview">
+          <div>
+            <span class="ribbon-kicker">2026 HABIT TRACKER</span>
+            <h2>Build the days you want to remember.</h2>
+          </div>
+          <div class="ribbon-status"><span class="status-dot"></span><span>Live progress</span><strong id="ribbonTodayStatus">Today</strong></div>
+        </section>
+        <header class="topbar">
+          <div class="page-title">
+            <h1>Dashboard</h1>
+            <p id="todayLabel">Loading date...</p>
+          </div>
+
+          <div class="top-actions">
+            <button id="themeToggle" class="icon-button" type="button">🌙</button>
+            <button id="addHabitBtn" class="primary-btn" type="button">+ Add Habit</button>
+          </div>
+        </header>
+
+        <section class="dashboard-summary card">
+          <div class="month-summary-heading">
+            <div>
+              <span class="eyebrow">Personal habit tracker</span>
+              <h2 id="dashboardMonthLabel">Monthly overview</h2>
+            </div>
+            <div class="month-progress-meter">
+              <div class="progress-meta"><span>Overall progress</span><strong id="dashboardOverallProgress">0%</strong></div>
+              <div class="progress-bar"><div id="dashboardProgressFill" class="progress-fill" style="width:0%"></div></div>
+            </div>
+          </div>
+          <div class="dashboard-stat-strip">
+            <div><span>Number of habits</span><strong id="totalHabitsValue">0</strong></div>
+            <div><span>Completed habits</span><strong id="completedHabitsValue">0</strong></div>
+            <div><span>Pending tasks</span><strong id="pendingHabitsValue">0</strong></div>
+            <div><span>Best day</span><strong id="bestDayValue">-</strong></div>
+            <div><span>Best week</span><strong id="bestWeekValue">-</strong></div>
+            <div><span>Current streak</span><strong id="currentStreakValue">0</strong></div>
+            <div><span>Longest streak</span><strong id="longestStreakValue">0</strong></div>
+          </div>
+        </section>
+
+        <section class="dashboard-tracker card">
+          <div class="calendar-header">
+            <div>
+              <span class="eyebrow">Daily completion</span>
+              <h2 id="calendarMonthLabel">Month</h2>
+            </div>
+            <div>
+              <button id="prevMonthBtn" class="secondary-btn" type="button">Prev</button>
+              <button id="nextMonthBtn" class="secondary-btn" type="button">Next</button>
+            </div>
+          </div>
+          <div class="month-summary compact-summary">
+            <div><span>Month</span><strong id="dashboardMonthName">-</strong></div>
+            <div><span>Completed work</span><strong id="dashboardCompletedWork">0</strong></div>
+            <div><span>Progress</span><strong id="completionPercentValue">0%</strong></div>
+          </div>
+          <div class="tracker-scroll">
+            <div class="calendar-grid tracker-grid" id="calendarGrid"></div>
+          </div>
+          <div class="dashboard-chart-section">
+            <div class="section-head"><h3>Daily progress</h3><span class="chip">Completion by day</span></div>
+            <div id="dailyChartBox" class="daily-chart-box"></div>
+            <div id="dailyChartLabels" class="chart-lines"></div>
+          </div>
+        </section>
+
+        <section class="content-grid dashboard-lower" style="margin-top: 22px;">
+          <div class="card section-card">
+            <div class="section-head"><h3>Today's checklist</h3></div>
+            <div id="todayHabitsList" class="habit-list"></div>
+          </div>
+          <div class="card section-card">
+            <div class="section-head"><h3>Habit progress</h3></div>
+            <div class="progress-stack" id="progressStack"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="habitModal" class="hidden">
+      <div class="auth-page" style="padding: 20px;">
+        <div class="auth-card" style="max-width: 620px;">
+          <h2 id="habitModalTitle">Add Habit</h2>
+          <form id="habitForm">
+            <input type="hidden" id="habitId" />
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="habitName">Habit Name</label>
+                <input id="habitName" type="text" required />
+              </div>
+
+              <div class="form-group">
+                <label for="habitCategory">Category</label>
+                <select id="habitCategory">
+                  <option>Health</option>
+                  <option>Study</option>
+                  <option>Fitness</option>
+                  <option>Personal</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="habitFrequency">Frequency</label>
+                <select id="habitFrequency">
+                  <option>Daily</option>
+                  <option>Weekly</option>
+                  <option>Custom</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="habitDailyGoal">Daily Goal</label>
+                <input id="habitDailyGoal" type="number" min="1" value="1" required />
+              </div>
+
+              <div class="form-group" style="grid-column: 1 / -1;">
+                <label for="habitDescription">Description</label>
+                <textarea id="habitDescription" rows="3"></textarea>
+              </div>
+
+              <div class="form-group" style="grid-column: 1 / -1;">
+                <label for="habitStartDate">Start Date</label>
+                <input id="habitStartDate" type="date" required />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">Save Habit</button>
+              <button type="button" id="closeHabitModal" class="secondary-btn">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

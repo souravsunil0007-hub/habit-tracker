@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar | Habit Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-badge">✓</div>
+          <span>Habit Tracker</span>
+        </div>
+
+        <nav class="nav-menu">
+          <a class="nav-item" href="dashboard.html"><span class="nav-icon">🏠</span> Dashboard</a>
+          <a class="nav-item active" href="calendar.html"><span class="nav-icon">📅</span> Calendar</a>
+          <a class="nav-item" href="yearly.html"><span class="nav-icon">📊</span> Yearly Statistics</a>
+          <a class="nav-item" href="login.html"><span class="nav-icon">🔒</span> Logout</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-pill">
+            <div class="avatar" id="userAvatar">U</div>
+            <div>
+              <div id="sidebarUserName">User</div>
+              <small id="sidebarUserEmail">user@email.com</small>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="page-title">
+            <h1>Habit Calendar</h1>
+            <p>Track your completion history across days.</p>
+          </div>
+          <div class="top-actions">
+            <button id="themeToggle" class="icon-button" type="button">🌙</button>
+          </div>
+        </header>
+
+        <div class="calendar-wrap">
+          <div class="calendar-header">
+            <h3 id="calendarMonthLabel">Month</h3>
+            <div>
+              <button id="prevMonthBtn" class="secondary-btn" type="button">Prev</button>
+              <button id="nextMonthBtn" class="secondary-btn" type="button">Next</button>
+            </div>
+          </div>
+
+          <div class="month-summary">
+            <div><span>Number of habits</span><strong id="calendarHabitCount">0</strong></div>
+            <div><span>Completed work</span><strong id="calendarCompletedCount">0</strong></div>
+            <div><span>Month progress</span><strong id="calendarProgress">0%</strong></div>
+          </div>
+
+          <div class="weekly-progress" id="weeklyProgress"></div>
+
+          <div class="tracker-scroll">
+            <div class="calendar-grid tracker-grid" id="calendarGrid"></div>
+          </div>
+
+          <section class="daily-chart-card" aria-labelledby="dailyChartTitle">
+            <div class="section-head">
+              <div>
+                <span class="eyebrow">Daily progress</span>
+                <h3 id="dailyChartTitle">Completion by day</h3>
+              </div>
+              <span class="chip">0-100%</span>
+            </div>
+            <div id="dailyChartBox" class="daily-chart-box"></div>
+            <div id="dailyChartLabels" class="chart-lines"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

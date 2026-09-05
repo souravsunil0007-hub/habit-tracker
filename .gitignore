@@ -1,0 +1,3 @@
+backend/data/mongodb/
+backend/.env
+node_modules/
