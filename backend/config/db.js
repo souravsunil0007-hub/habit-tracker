@@ -15,6 +15,9 @@ const connectDB = async () => {
     console.log(`MongoDB connected: ${conn.connection.host}`);
   } catch (error) {
     console.warn(`Primary MongoDB connection failed: ${error.message}`);
+    if (process.env.VERCEL) {
+      throw new Error('MONGO_URI must be configured for the Vercel deployment');
+    }
     console.warn('Starting the persistent local database fallback. Data is stored under backend/data/mongodb.');
 
     try {
